@@ -18,11 +18,11 @@ from MachikoroSimulator.Game.StartAGame import StartAGame
 def routine():
     print("Machikoro Simulator v0.0")
 
-    #p1 = Bot("Cheese Bot")
-    #p1.with_plan(Strategy.StrategyFactory.cheese_factory_strategy())
+    p1 = Bot("Cheese Bot")
+    p1.with_plan(Strategy.StrategyFactory.cheese_factory_strategy())
 
-    p1 = Bot("Dev Bot")
-    p1.with_plan(Strategy.StrategyFactory.developer_strategy())
+    p3 = Bot("Dev Bot")
+    p3.with_plan(Strategy.StrategyFactory.developer_strategy())
 
     p2 = Bot("Furniture Bot")
     p2.with_plan(Strategy.StrategyFactory.furniture_factory_strategy())
@@ -31,7 +31,8 @@ def routine():
 
     deck = DeckManager()
 
-    game = StartAGame.with_(p1, p2).using(engine, deck)
+    game = StartAGame.with_(p1, p2).and_(p3).using(engine, deck)
+
     print("Set up a game between {0}, {1}, with the standard deck, and starting state.".format(p1.name, p2.name))
     game.Run()
 
