@@ -22,5 +22,5 @@ class PlayerContext:
 
         return context
 
-    def using(self, engine, deck):
-        return Game(self._players, engine, deck)
+    def using(self, engine, deck, logger):
+        return Game(self._players, engine, deck, logger)

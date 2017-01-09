@@ -91,7 +91,7 @@ class GameTest(unittest.TestCase):
         #Arrange
         #performed by setup
         #Act
-        idx = self.subject._getNextPlayerIndex()
+        idx = self.subject._get_next_player()
         #Assert
         self.assertEqual(1, idx)
 
@@ -99,14 +99,14 @@ class GameTest(unittest.TestCase):
         #Arrange
         self.subject._currentPlayer = 1 #since there are 2 players
         #Act
-        idx = self.subject._getNextPlayerIndex()
+        idx = self.subject._get_next_player()
         #Assert
         self.assertEqual(0, idx)
 
     def test_NextPlayerIndex_GivenIndex(self):
         #Arrange
         #Act
-        idx = self.subject._getNextPlayerIndex(1) # should loop since last player
+        idx = self.subject._get_next_player(1) # should loop since last player
         #Assert
         self.assertEqual(0, idx)
 
@@ -118,7 +118,7 @@ class GameTest(unittest.TestCase):
         # Hacky hacky hacky!
         self.subject._players = self.basePlayers
         #Act
-        self.subject._TakeMoneyIfNecessary(2)
+        self.subject._take_money_if_necessary(2)
 
         #Assert
         #Confirms no money changed hands
@@ -133,7 +133,7 @@ class GameTest(unittest.TestCase):
         # Hacky hacky hacky!
         self.subject._players = self.basePlayers
         #Act
-        self.subject._TakeMoneyIfNecessary(3) # a 3 would activate a cafe, if there was one.
+        self.subject._take_money_if_necessary(3) # a 3 would activate a cafe, if there was one.
 
         #Assert
         #Confirms no money changed hands
@@ -150,7 +150,7 @@ class GameTest(unittest.TestCase):
         # Hacky hacky hacky!
         self.subject._players = self.basePlayers
         #Act
-        self.subject._TakeMoneyIfNecessary(3) # a 3 would activate a cafe, if there was one.
+        self.subject._take_money_if_necessary(3) # a 3 would activate a cafe, if there was one.
 
         #Assert
         #Confirms money changed hands
@@ -165,7 +165,7 @@ class GameTest(unittest.TestCase):
         # Hacky hacky hacky!
         self.subject._players = self.basePlayers
         # Act
-        self.subject._AwardMoneyIfNecessary(1)
+        self.subject._award_money_if_necessary(1)
 
         # Assert
         # Confirms everyone gets something
@@ -184,7 +184,7 @@ class GameTest(unittest.TestCase):
         # Hacky hacky hacky!
         self.subject._players = self.basePlayers
         # Act
-        self.subject._AwardMoneyIfNecessary(2) # a 2 hits both ranch and bakery
+        self.subject._award_money_if_necessary(2) # a 2 hits both ranch and bakery
 
         # Assert
         # Confirms everyone gets something, but Current gets more
@@ -199,7 +199,7 @@ class GameTest(unittest.TestCase):
         # Hacky hacky hacky!
         self.subject._players = self.basePlayers
         # Act
-        self.subject._AwardMoneyIfNecessary(6)
+        self.subject._award_money_if_necessary(6)
 
         # Assert
         # Confirms nobody gets anything
@@ -210,10 +210,10 @@ class GameTest(unittest.TestCase):
         #Arrange
         players = [self._createSmartPlayer(), self._createSmartPlayer()]
         self.subject._players = players
-        self.subject._initializeGame()
+        self.subject._init_game()
 
         #Act
-        self.subject._executeTurn()
+        self.subject._execute_turn()
 
         # Assert
         self.assertEqual(self.subject._turn, 0)
@@ -223,12 +223,12 @@ class GameTest(unittest.TestCase):
         #Arrange
         players = [self._createSmartPlayer(), self._createSmartPlayer()]
         self.subject._players = players
-        self.subject._initializeGame()
+        self.subject._init_game()
 
         self.subject._currentPlayer = 1
 
         #Act
-        self.subject._executeTurn()
+        self.subject._execute_turn()
 
         # Assert
         self.assertEqual(self.subject._turn, 1)
