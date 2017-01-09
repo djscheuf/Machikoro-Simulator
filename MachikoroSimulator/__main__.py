@@ -32,10 +32,7 @@ def routine():
     deck = DeckManager()
 
     game = StartAGame.with_(p1, p2).and_(p3).using(engine, deck)
-<<<<<<< HEAD
-=======
 
->>>>>>> multi-game-simulator
     print("Set up a game between {0}, {1}, with the standard deck, and starting state.".format(p1.name, p2.name))
     game.Run()
 
