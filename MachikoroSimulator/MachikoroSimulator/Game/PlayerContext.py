@@ -1,4 +1,5 @@
 from .Game import Game
+from copy import deepcopy
 
 
 class PlayerContext:
@@ -14,8 +15,11 @@ class PlayerContext:
         if self._count >= PlayerContext.maxPlayers:
             raise Exception("Too many players added.")
 
-        self._players.add(player)
-        self._count += 1
+        context = deepcopy(self)
+        context._players.append(player)
+        context._count += 1
+
+        return context
 
     def using(self, engine, deck):
         return Game(self._players, engine, deck)
