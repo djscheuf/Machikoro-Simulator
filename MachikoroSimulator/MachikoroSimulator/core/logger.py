@@ -19,12 +19,8 @@ class Logger:
         #TODO: eventually I should make this configurable by .config file or something, like log4net or others.
         self._verbosity = verbosity
         if appender is None:
-            appender = self._default_appender
+            appender = _default_appender
         self._appender = appender
-
-    @staticmethod
-    def _default_appender(msg):
-        pass
 
     def _append(self, template, args):
         self._appender(template.format(args))
@@ -52,3 +48,7 @@ class Logger:
 
     def fatal(self, template, args=None):
         self._filter(Verbosity.Fatal, template, args)
+
+
+def _default_appender(msg):
+    pass

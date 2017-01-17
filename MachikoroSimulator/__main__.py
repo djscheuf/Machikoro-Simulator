@@ -13,8 +13,9 @@ from MachikoroSimulator import Strategy
 from MachikoroSimulator.Engine.DeclareAnEngine import DeclareAnEngine
 from MachikoroSimulator.DeckManager import DeckManager
 from MachikoroSimulator.Game.StartAGame import StartAGame
-from MachikoroSimulator.Simulator.BatchSimulator import BatchSimulator
-from MachikoroSimulator.Simulator.Simulator import Simulation
+# from MachikoroSimulator.Simulator.BatchSimulator import BatchSimulator
+# from MachikoroSimulator.Simulator.Simulator import Simulation
+from MachikoroSimulator.Simulator.Coordinator import Coordinator
 from MachikoroSimulator.core.logger import *
 import time
 
@@ -50,7 +51,8 @@ def routine():
 
     print("Creating a 1000 game simulation...")
 
-    sim = BatchSimulator(game, sim_logger, 1000, 7)
+    sim = Coordinator(game, sim_logger, 1000, 7)
+    # sim = BatchSimulator(game, sim_logger, 1000, 7)
     # sim = Simulation(game, 1000, sim_logger)
 
     import time

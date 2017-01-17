@@ -1,6 +1,6 @@
 import concurrent.futures
 from copy import deepcopy
-from .Simulator import SimulationResult
+from .SimulationResult import SimulationResult
 
 
 class BatchSimulator:

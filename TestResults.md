@@ -1,3 +1,17 @@
+## Coordinator 3rd Run
+_7 Servants_
+Set up a game between Cheese Bot, Furniture Bot, and Dev Bot with the standard deck, and starting state.
+Creating a 1000 game simulation...
+Simulation took 14.061828136444092 seconds
+Simulation Results:
+	Total Games: 994
+	Avg. Turns per game: 18.016096579476862
+	Percentages:
+		 Furniture Bot: 1.5090543259557343%
+		 Cheese Bot: 48.89336016096579%
+		 Dev Bot: 49.59758551307847%
+	 Overall winner: Dev Bot with a percentage of 49.59758551307847
+
 ## Batch Simulator 2nd Run
 _With 5 Workers_
 Set up a game between Cheese Bot, Furniture Bot, and Dev Bot with the standard deck, and starting state.
