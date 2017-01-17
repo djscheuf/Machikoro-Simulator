@@ -62,7 +62,6 @@ class Simulation:
             self._winners[player] = 0.00
 
     def run(self):
-        #TODO consider multi-threading.
         while self._count < self._max:
             self._logger.info("Running game {0}".format(self._count))
             self._game.reset()

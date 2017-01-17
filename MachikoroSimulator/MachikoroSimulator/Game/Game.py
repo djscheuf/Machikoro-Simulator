@@ -3,6 +3,12 @@ from ..CardEnum import *
 from copy import deepcopy
 
 
+class GameResult:
+    def __init__(self,winner,turns):
+        self.winner = winner
+        self.turns = turns
+
+
 class Game:
     def __init__(self, players, engine, deck, logger):
         random.seed()
@@ -19,9 +25,8 @@ class Game:
 
         self._init_game()
 
-    def _log(self,msg):
+    def _log(self, msg):
         self._logger.debug(msg)
-
 
     def _init_game(self):
         self._currentPlayer = 0
@@ -163,3 +168,6 @@ class Game:
             result.append(player.name)
 
         return result
+
+    def get_result(self):
+        return GameResult(self.winner, self.total_turns)

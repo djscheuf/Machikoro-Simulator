@@ -13,8 +13,10 @@ from MachikoroSimulator import Strategy
 from MachikoroSimulator.Engine.DeclareAnEngine import DeclareAnEngine
 from MachikoroSimulator.DeckManager import DeckManager
 from MachikoroSimulator.Game.StartAGame import StartAGame
+from MachikoroSimulator.Simulator.BatchSimulator import BatchSimulator
 from MachikoroSimulator.Simulator.Simulator import Simulation
 from MachikoroSimulator.core.logger import *
+import time
 
 
 def routine():
@@ -38,16 +40,25 @@ def routine():
 
     game = StartAGame.with_(p1, p2).and_(p3).using(engine, deck, logger)
 
-    print("Set up a game between {0}, {1}, and {2} with the standard deck, and starting state.".format(p1.name, p2.name, p3.name))
+    print("Set up a game between {0}, {1}, and {2} with the standard deck, and starting state.".format(p1.name,
+                                                                                                       p2.name,
+                                                                                                       p3.name))
 
     # game.run()
 
     # print("Winner: {0} on turn {1}".format(game.winner.name, game.total_turns))
 
     print("Creating a 1000 game simulation...")
-    sim = Simulation(game, 1000, sim_logger)
 
+    sim = BatchSimulator(game, sim_logger, 1000, 7)
+    # sim = Simulation(game, 1000, sim_logger)
+
+    import time
+    t0 = time.time()
     result = sim.run()
+    t1 = time.time()
+    print("Simulation took {0} seconds".format(t1-t0))
+
     # but not silence the simulation.
     print(result)
 
