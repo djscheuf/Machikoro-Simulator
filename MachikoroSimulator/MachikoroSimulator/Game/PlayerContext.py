@@ -12,6 +12,7 @@ class PlayerContext:
         self._count = 2
 
     def and_(self, player):
+        #TODO May want to get the fluent decorator for these...
         if self._count >= PlayerContext.maxPlayers:
             raise Exception("Too many players added.")
 
@@ -21,5 +22,5 @@ class PlayerContext:
 
         return context
 
-    def using(self, engine, deck):
-        return Game(self._players, engine, deck)
+    def using(self, engine, deck, logger):
+        return Game(self._players, engine, deck, logger)
