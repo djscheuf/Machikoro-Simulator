@@ -42,6 +42,7 @@ class SimulationResult:
         return first+second+third
 
     def merge(self, result):
+        # Merges given result in with self. Calculations will need to be re-performed after a merge.
         self.count += result.count
 
         for player in result.wins.keys():

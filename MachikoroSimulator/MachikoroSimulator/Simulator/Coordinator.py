@@ -10,27 +10,29 @@ class Coordinator:
         self._game = game
         self._max = count
         self._parallels = parallels
-        self._games_per_parallel = self._max // self._parallels
+
+        import math
+        self._games_per_parallel = math.ceil(self._max / self._parallels)
 
         self._logger = logger
 
+        # this is kind of hacky, but allowed the player list to be passed to the empty result.
         self._result = SimulationResult.create_empty_result(game._players)
 
-    def _init_winners(self):
-        players = self._game.get_players()
-        for player in players:
-            self._winners[player] = 0
-
     def run(self):
+        # allows creation of specified number of parallel processes.
         with concurrent.futures.ProcessPoolExecutor(max_workers=self._parallels) as executor:
             servants = []
 
+            # assigns run_a_sim function to each process with their own copy of game.
             for i in range(self._parallels):
                 servants.append(executor.submit(_run_a_simulator, deepcopy(self._game), self._games_per_parallel))
 
+            # as the processes complete, merge in their results.
             for future in concurrent.futures.as_completed(servants):
                 self._result.merge(future.result())
 
+        # once all processes are complete, perform statistical calculations on collected results.
         self._result.do_calculations()
 
         return self._result

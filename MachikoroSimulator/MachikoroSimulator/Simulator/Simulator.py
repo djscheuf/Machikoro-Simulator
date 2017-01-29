@@ -5,6 +5,7 @@ Purpose:
 """
 from .SimulationResult import SimulationResult
 
+
 class Simulation:
     def __init__(self, game, count, logger):
         self._game = game

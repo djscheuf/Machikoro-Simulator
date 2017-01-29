@@ -1,5 +1,11 @@
-## Coordinator 3rd Run
+# Test Results
+This file contains the console print outs of the simulators current supported. (dev branch of v1.1)
+THe sub-heading should refer to the simulator used, followed by their results. These results were collected to
+allow comparison between current and future work, as well as between the available simulators.
+
+## Coordinator
 _7 Servants_
+```
 Set up a game between Cheese Bot, Furniture Bot, and Dev Bot with the standard deck, and starting state.
 Creating a 1000 game simulation...
 Simulation took 14.061828136444092 seconds
@@ -11,9 +17,11 @@ Simulation Results:
 		 Cheese Bot: 48.89336016096579%
 		 Dev Bot: 49.59758551307847%
 	 Overall winner: Dev Bot with a percentage of 49.59758551307847
+```
 
-## Batch Simulator 2nd Run
+## Batch Simulator
 _With 5 Workers_
+```
 Set up a game between Cheese Bot, Furniture Bot, and Dev Bot with the standard deck, and starting state.
 Creating a 1000 game simulation...
 Simulation took 150.60899376869202 seconds
@@ -25,8 +33,10 @@ Simulation Results:
 		 Furniture Bot: 1.7999999999999998%
 		 Cheese Bot: 50.4%
 	 Overall winner: Cheese Bot with a percentage of 50.4
+```
 
 _With 7 Workers_
+```
 Set up a game between Cheese Bot, Furniture Bot, and Dev Bot with the standard deck, and starting state.
 Creating a 1000 game simulation...
 Simulation took 150.24892926216125 seconds
@@ -38,8 +48,13 @@ Simulation Results:
 		 Dev Bot: 50.40241448692153%
 		 Furniture Bot: 1.710261569416499%
 	 Overall winner: Dev Bot with a percentage of 50.40241448692153
+```
+_Comments_
+The Batch simulator may have been implemented poorly, as it appears to only run on a single core.
+May drop this during next release.
 
-## Initial Simulator nth Run
+## Simulator
+```
 Set up a game between Cheese Bot, Furniture Bot, and Dev Bot with the standard deck, and starting state.
 Creating a 1000 game simulation...
 Simulation took 81.92231297492981 seconds
@@ -51,4 +66,4 @@ Simulation Results:
 		 Cheese Bot: 48.4%
 		 Furniture Bot: 1.6%
 	 Overall winner: Dev Bot with a percentage of 50.0
-
+```

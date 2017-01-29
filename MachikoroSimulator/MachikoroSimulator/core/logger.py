@@ -9,14 +9,13 @@ class Verbosity(IntEnum):
     Fatal = 1
 
 
-
+# This class does need some work. I may replace this with Log4py or an equivalent eventually.
 class Logger:
     Levels = {Verbosity.Debug: "DEBUG", Verbosity.Info: "INFO ",
               Verbosity.Warn: "WARN ", Verbosity.Error: "ERROR",
               Verbosity.Fatal: "FATAL"}
 
     def __init__(self, verbosity=Verbosity.Debug, appender=None):
-        #TODO: eventually I should make this configurable by .config file or something, like log4net or others.
         self._verbosity = verbosity
         if appender is None:
             appender = _default_appender
